@@ -50,6 +50,9 @@ uis.directive('uiSelect',
         //Limit the number of selections allowed
         $select.limit = (angular.isDefined(attrs.limit)) ? parseInt(attrs.limit, 10) : undefined;
 
+        //Do not open dropdown list and do not stop propagation to allow form submit if pressing Enter (only if dropdown list is closed)
+        scope.inForm = (angular.isDefined(attrs.inForm)) ? $parse(attrs.inForm)(scope) : true;
+
         //Set reference to ngModel from uiSelectCtrl
         $select.ngModel = ngModel;
 
